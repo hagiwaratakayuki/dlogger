@@ -1,0 +1,1 @@
+<h2 style="font-size: 1.2rem; font-weight: bold; display: block; font-family: 'Baskerville' ,'Baskerville Old Face', 'Garamond', 'Times New Roman', serif" class="mb-4 mt-3"><slot/></h2>

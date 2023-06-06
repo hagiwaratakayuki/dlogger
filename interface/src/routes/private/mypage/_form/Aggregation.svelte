@@ -1,0 +1,79 @@
+<script>
+	import { Form, FormGroup, Input, Label, Button } from "sveltestrap";
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher();
+
+	import Contract from "./Contract.svelte";
+	
+	import NoItem from "./elements/NoItem.svelte";
+	import DeleteButton from "./elements/DeleteButton.svelte";
+	
+	import AddButton from "./elements/AddButton.svelte";
+	import FlatHeader2 from "../../../../elements/FlatHeader2.svelte";
+	import FlathHader1 from "../../../../elements/FlathHader1.svelte";
+	import Protocol from "./Protocol.svelte";
+    import Contracts from "./Contracts.svelte";
+	import Unit from "./elements/Unit.svelte";
+	import Audit from "./Audit.svelte";
+	
+    /**
+     * @typedef  {import("../../../../relay_types/aggregation.d.ts").Aggregation} Aggregation
+     */
+
+      const defaultValue = {description:'', audit:[], contracts:[], website:{}, logger:{}, origin:{}, sender:{}} 
+    /**
+     * @type {Aggregation}
+     */
+
+    export let value = {};
+    let _value = {};
+    let _contracts = [];
+    $:{
+        if(value != _value){
+        
+      
+            value = _value = Object.assign({},defaultValue, value || {});
+        }
+        
+        
+    }
+    function triggerSave() {
+        dispatch('save');
+
+    }
+   
+
+
+
+</script>
+<Form>
+    
+    <FlatHeader2>Description</FlatHeader2>    
+    <FormGroup floating>
+        
+        <Input type="textarea" id="about"/>
+        <Label for="about" class="mb-4">Description of This Aggrecation</Label>
+    </FormGroup>
+    <FlatHeader2>Origin Adress</FlatHeader2>
+    <Unit isIndent={true}>
+        <Protocol bind:value={value.origin}></Protocol>   
+    </Unit> 
+  
+
+    <Audit  label={"Audit Link for This Aggregation"} key={'audit'} headerLevel={2} bind:link={value.audit}/>
+    <FlatHeader2>Logger</FlatHeader2>
+    <Unit isIndent={true}>
+        <Contract contractAlias="Logger" key="logger" bind:value={value.logger}></Contract>
+        
+
+    </Unit>
+    <FlatHeader2>Contracts</FlatHeader2>
+    <Unit isIndent={true}>
+        
+        <Contracts bind:contracts={value.contracts}></Contracts>
+        
+    </Unit>
+    <FormGroup>
+        <Button color="primary" size="lg" type="button"  class="w-100 fw-bold" on:click={triggerSave}>Save</Button>
+    </FormGroup>
+</Form>

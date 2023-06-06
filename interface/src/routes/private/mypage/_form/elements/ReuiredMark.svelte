@@ -1,0 +1,1 @@
+<span aria-hidden="true" class="text-danger fw">*</span>

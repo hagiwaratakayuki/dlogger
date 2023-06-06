@@ -1,0 +1,1 @@
+<h3 style="font-size: 1rem; font-weight: bold; display: block;font-family: 'arial' " class="mb-3"><slot/></h3>
