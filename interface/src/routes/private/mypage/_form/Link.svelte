@@ -5,8 +5,8 @@
 	import Website from "./Website.svelte";
     /**
      * @typedef {import("../../../../relay_types/aggregation").Link} Link
-     * @typedef {import("../../../../relay_types/aggregation").WebSite} WebSite
-     * @typedef {import("../../../../relay_types/aggregation").ProtocolAddress} ProtocolAddress
+     * @typedef {import("../../../../relay_types/aggregation").WebSite | {linkType:'website'}} WebSite
+     * @typedef {import("../../../../relay_types/aggregation").ProtocolAddress | {linkType:'protocolAddress'}} ProtocolAddress
     */
     /**
      * @type {Link}
@@ -14,13 +14,13 @@
     export let link = {}
     export let key = "";
     /**
-     * @type {WebSite}
+     * @type {Link}
      */
     let _website = {linkType:'website', url:''};
     /**
-     * @type {ProtocolAddress}
+     * @type {Link}
     */
-   let _protocolAddress = {linkType:'protocolAdress', protocol:'', address:''};
+   let _protocolAddress = {linkType:'protocolAddress', protocol:'', address:''};
     let linkType = ''; 
     $:{
         if (!link) {
@@ -64,7 +64,7 @@
 </script>
 <FormGroup floating>    
     <Input id={createId(key)} bind:value={link.linkType} type="select">
-        <option value="protocolAddress">Protocol Adress</option>
+        <option value="protocolAddress">Protocol Address</option>
         <option value="website">Website</option>
     </Input>
     <Label for={createId(key)}>Link type</Label>

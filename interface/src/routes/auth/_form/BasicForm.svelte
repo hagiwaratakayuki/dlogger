@@ -26,6 +26,6 @@ export let isLoading = false;
       {#if passwordInfo}<FormText>{passwordInfo}</FormText>{/if}
   </FormGroup>
   <FormGroup class="text-center">
-    <Button type="button" color={"primary"} disabled={isLoading}><Spinner size={"sm"}></Spinner>{buttonMessage}</Button>
+    <Button type="button" color={"primary"} disabled={isLoading} class="w-25">{#if isLoading}<Spinner size={"sm"}></Spinner>{/if}{buttonMessage}</Button>
   </FormGroup>  
 </Form>

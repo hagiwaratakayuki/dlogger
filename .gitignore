@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+interface/node_modules
+interface/build
+interface/.svelte-kit
+interface/package
+interface/.env
+interface/.env.*
+!interface/.env.example
+interface/.vite.config.js.timestamp-*
+interface/vite.config.ts.timestamp-*
+**/secret.js
+
+interface/storybook-static
