@@ -52,6 +52,6 @@
     "storybook": "^7.0.18",
     "svelte-heros": "^3.12.0",
     "svelte-kit-cookie-session": "^3.4.1",
-    "sveltestrap": "^5.10.0"
+    "sveltestrap": "github:hagiwaratakayuki/sveltestrappatch#popperjs_degration_fix"
   }
 }
