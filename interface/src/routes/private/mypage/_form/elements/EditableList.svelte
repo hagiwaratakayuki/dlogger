@@ -3,29 +3,52 @@
  export let items = [];
  export let initItem = {}
 
- let _items = []
- let lock = false
+ let lockMap = {};
 
 
- $:if (items != _items && lock === false) {
-    items = _items = items || [];
-}
+ 
 
-function _setLock(){
-    lock = true;
+ /**
+  * 
+  * @param {string | Function} key 
+  */
+function _setLock(key){
+    const name = typeof ket === 'string'? key : key.name;
+    lockMap[name] = true;
 
     tick().then(function() {
-        lock = false;
+        lockMap[name] = false;
     })
-} 
-function addItem() {
+}
+/**
+ * 
+ * @param {string | Function} key
+ */
+function _checkLock(key) {
+    const _key = typeof key === 'string'? key : key.name;
+    return lockMap[_key];
 
-    items.push(initItem);
+
+} 
+function addItem(item) {
+    if (_checkLock(addItem)) {
+        return;
+
+    }
+    _setLock(addItem);
+    items.push(item || initItem);
     items = items;
+   
 
  }
  function createDeleteFunction(index) {
+    const key = "delete_" + index;
     return function() {
+        if(_checkLock(key) ){
+            return
+
+        }
+        _setLock(key);
         items.splice(index, 1);
         items = items;
     }
@@ -33,19 +56,20 @@ function addItem() {
 
  }
  function createUpdateFunction(index) {
-    return function (_item) {
-        if (lock === true) {
+    const key = "update_" + index;
+    return function (item) {
+        if (_checkLock(key)){
             return;
         }
-        _setLock();
-        items[index] = _item;
+        _setLock(key);
+        items[index] = item;
         items = items;
     }
  }
 
 </script>
 {#each items as item, index}
-    <slot name="each" index={index} item={item} updateFunction={createUpdateFunction(index)} deleteFunction={createDeleteFunction} />
+    <slot name="each" index={index} item={item} updateFunction={createUpdateFunction(index)} deleteFunction={createDeleteFunction(index)} />
 {:else}
     <slot name="noItem"/>    
 {/each}

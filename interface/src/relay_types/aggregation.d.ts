@@ -31,10 +31,15 @@ export type Contract = {
     isSender:boolean?
 
 }
-
-export type Aggregation = {
-    description:string?,
-    website:WebSite,
+export type AggregationHeader = {
+    description: string?,
+    website: WebSite?,
+    protocol: string?,
+    address: string,
+    id:string | number | null,
+}
+export type Aggregation = AggregationHeader | {
+       
     logger:Contract,
     audit:Audit,
     contracts:Contract[],

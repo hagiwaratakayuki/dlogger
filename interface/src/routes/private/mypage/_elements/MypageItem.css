@@ -1,0 +1,17 @@
+.mypage_item .icon {
+    width: 1em;
+    height: 1em;
+    stroke-width: 2px;
+}
+.mypage_item input {
+    border: solid 1px;
+    border-color: var(--bs-danger);
+}
+.mypage_item input:checked {
+    background-color: var(--bs-danger);
+}
+.mypage_item input:focus {
+    border-color: var(--bs-danger);
+    outline: 0;   
+    box-shadow:0 0 0 .25rem rgba(var(--bs-danger-rgb), .25);
+}

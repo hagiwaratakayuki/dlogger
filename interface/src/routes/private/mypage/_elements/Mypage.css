@@ -1,0 +1,4 @@
+#mypage .control .create {
+    background-color: var(--bs-indigo);
+    color: white;
+}
