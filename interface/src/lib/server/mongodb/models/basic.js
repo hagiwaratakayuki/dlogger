@@ -3,6 +3,8 @@ import { ObjectId } from "mongodb";
 
 const initiaizedCollections = {};
 
+
+
 /**
  * @typedef {string | ObjectId} Id
  */
@@ -34,10 +36,7 @@ export class Model {
         }
        
     }
-    async createIndex() {
-        
-
-    }
+    async createIndex() {}
     /**
      * 
      * @param {Id} id 
@@ -61,7 +60,7 @@ export class Model {
      * @param {any} doc
      * @param {import("mongodb").InsertOneOptions} options 
      */
-    create(doc, options) {
+    create(doc, options={}) {
         return this.collection.insertOne(doc, options)
 
     }
@@ -71,9 +70,10 @@ export class Model {
      * @param {any} document
      * @param  {import("mongodb").UpdateOptions} options
      */
-    update(id, document, options) {
+    update(id, document, options={}) {
         const _id = this._regularizeId(id);
         const query = {_id};
+        delete document._id
         return this.collection.updateOne(query, {'$set':document}, options)
 
     }
@@ -83,7 +83,7 @@ export class Model {
      */
     delete(id) {
         const _id = this._regularizeId(id);
-        return this.collection.deleteOne(_id)
+        return this.collection.deleteOne(_id);
 
     }
     /**
@@ -91,9 +91,7 @@ export class Model {
      * @param {any} query 
      */
     query(query) {
-        this.collection.find(query);     
-    
-
+       return  this.collection.find(query);     
     }
 
 
