@@ -60,7 +60,7 @@ function onChange() {
      
                 
     </div>
-    <div class="w-25 text-center border-start border-primary-subtle">
+    <div class="w-25 text-center border-start border-primary-subtle ps-4">
         <a title={"jump to  " + wordWrapper(aggregation.description)} href={"/aggregation/" + aggregation.protocol || 'mongodb' + '/'  + aggregation.address || aggregation.id } ><Link2Icon class="me-2 icon" /></a>
         <a href={"/private/mypage/edit/" + aggregation.id} title="test"><Edit3Icon class="text-success me-2 icon"/></a>
        <button type="button" class="bg-body border-0" on:click={_deleteFunction} ><Trash2Icon class="text-danger icon" /></button>         

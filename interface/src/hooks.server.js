@@ -1,13 +1,22 @@
+import { error } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
-import { handleSession } from 'svelte-kit-cookie-session';
-const sessionHandler = handleSession({
-    secret: 'SOME_COMPLEX_SECRET_AT_LEAST_32_CHARS'
-});
+import { InMemorySessionRepository, handleSession } from '@sveltekit-statefull-session/core';
 
+const repository = new InMemorySessionRepository({ ttl: '24h' });
+const sessionHandle = handleSession(repository, { debug: import.meta.env.DEV });
+/**
+ * 
+ * @type {import("@sveltejs/kit").Handle}  
+ */
+const authHandle = async function({event, resolve}){
+    if (event.url.pathname.split('/').indexOf('private') !== -1) {
+        if ((!import.meta.env.DEV || event.url.searchParams.get('strict')) && !(await event.locals.session.get())?.user){
+            throw error(404);
+        }
 
-export const handle = sequence(sessionHandler, ({ resolve, event }) => {
-    // event.locals is populated with the session `event.locals.session`
-    // event.locals is also populated with all parsed cookies by handleSession, it would cause overhead to parse them again - `event.locals.cookies`.
-    // Do anything you want here
-    return resolve(event);
-});
+    }
+    return await resolve(event);
+
+}
+
+export const handle = sequence(sessionHandle, authHandle)

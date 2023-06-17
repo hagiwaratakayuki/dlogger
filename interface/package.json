@@ -47,8 +47,8 @@
   },
   "type": "module",
   "dependencies": {
+    "@sveltekit-statefull-session/core": "^1.2.4",
     "mongodb": "5.6",
-    "svelte-kit-cookie-session": "^3.4.1",
     "sveltestrap": "github:hagiwaratakayuki/sveltestrappatch#popperjs_degration_fix"
   }
 }

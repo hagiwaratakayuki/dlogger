@@ -9,6 +9,7 @@ interface/.env.*
 !interface/.env.example
 interface/.vite.config.js.timestamp-*
 interface/vite.config.ts.timestamp-*
-**/secret.js
+**/secret.*.js
+!**/secret.example.js
 
 interface/storybook-static
