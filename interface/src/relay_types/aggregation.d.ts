@@ -21,14 +21,18 @@ export type Oracle = {
     audit:Audit
 }
 
-export type Contract = {
-    name:string?
-    about:string?,
-    website:WebSite?,
-    protocol:ProtocolAddress,
-    audit:Audit,
-    oracles:Oracle[]?
-    isSender:boolean?
+export type ContractMinimum = {
+    isSender: boolean 
+}
+
+export type Contract = ContractMinimum & {
+    name: string
+    about: string,
+    website: WebSite,
+    protocol: ProtocolAddress,
+    audit: Audit,
+    oracles?: Oracle[]
+    
 
 }
 export type Aggregation = {

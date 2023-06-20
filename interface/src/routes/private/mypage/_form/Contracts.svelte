@@ -8,7 +8,7 @@
 	import Unit from "./elements/Unit.svelte";
 	
     /**
-     * @typedef {import("../../../../relay_types/aggregation").Contract} ContarctType
+     * @typedef {import("../../../../relay_types/aggregation").ContractMinimum} ContarctType
      * @type {ContarctType[]}
      */
     export let contracts = [];
@@ -31,22 +31,7 @@
                 senderIndex = -1;
 
             }
-            else {
-                for (const contract of contracts) {
-                    if (index !== senderIndex && contract.isSender === true) {
-                        senderIndex = index;
-                        break;
-
-                    }
-                    index++;
-                
-                }
-                if (senderIndex !==_senderIndex && _senderIndex !== -1) {
-                    contracts[_senderIndex].isSender = false;
-                    contracts[_senderIndex] = contracts[_senderIndex];
-
-                }     
-            }
+            
             
 
         
@@ -58,7 +43,7 @@
          * @type {ContarctType}
          */
         const push = { 
-            isSender:contracts.length === 0
+            isSender: contracts.length === 0
             
         }
         contracts.push(push);
