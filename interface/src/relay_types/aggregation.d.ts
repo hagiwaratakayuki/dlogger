@@ -1,19 +1,17 @@
 export type WebSite = {
-    
+    linkType?: "website",
     url:string,
 }
 
 export type ProtocolAddress = {
-   
+    linkType?: "website",
     name:string,
     address: string, 
 }
 
-export type Link = WebSite | ProtocolAddress | {
-    linkType: 'protocolAddress' | 'website'
-};
+export type Link = WebSite | ProtocolAddress; 
 
-export type Audit = Link[];// same thing multyple link. ex websit, onchain 
+export type Audit = Link[];// same thing multiple link. ex website, onchain 
 export type Oracle = {
     name:string,
     website:WebSite?,

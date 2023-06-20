@@ -5,31 +5,33 @@
 	import Website from "./Website.svelte";
     /**
      * @typedef {import("../../../../relay_types/aggregation").Link} Link
-     * @typedef {import("../../../../relay_types/aggregation").WebSite | {linkType:'website'}} WebSite
-     * @typedef {import("../../../../relay_types/aggregation").ProtocolAddress | {linkType:'protocolAddress'}} ProtocolAddress
-    */
-    /**
-     * @type {Link}
      */
-    export let link = {}
+    
+    /**
+     * @type {Link | null}
+     */
+    const defaultValue = {linkType:'website'} 
+     /**
+     * @type {Link }
+     */
+    export let link = Object.assign({}, defaultValue)
     export let key = "";
+    
+    
     /**
      * @type {Link}
      */
-    let _website = {linkType:'website', url:''};
+    let _website = {linkType:'website',url:''}
     /**
      * @type {Link}
     */
    let _protocolAddress = {linkType:'protocolAddress', protocol:'', address:''};
     let linkType = ''; 
     $:{
-        if (!link) {
-            link = {};
-        }
-        if (!link.linkType) {
-            link.linkType = 'protocolAddress';
-
-        }
+        
+        link = Object.assign({}, defaultValue, link || {});
+        
+       
         if (linkType === link.linkType) {
             
             if (link.linkType === 'protocolAddress') {

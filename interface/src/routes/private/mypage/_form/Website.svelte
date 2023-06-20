@@ -1,7 +1,7 @@
 <script>
 import { Input, FormGroup, Label } from "sveltestrap";
 /**
- * @type {import("../../../../relay_types/aggregation.d.ts").WebSite}
+ * @type {import("$lib/util_types.js").KeysMap<import("../../../../relay_types/aggregation.d.ts").WebSite>}
  */
 export let value = {url:''};
 export let key = '';

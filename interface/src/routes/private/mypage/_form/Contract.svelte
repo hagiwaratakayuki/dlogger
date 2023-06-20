@@ -12,7 +12,7 @@
 	import Unit from "./elements/Unit.svelte";
     /**
      * @typedef {import("../../../../relay_types/aggregation").Contract} ContractType
-     * @typedef {import("$lib/util_types").KeysMap<ContractType>} ContractInits 
+     * @typedef {Partial<import("$lib/util_types").KeysMap<ContractType>>} ContractInits 
      */
 
      /**
