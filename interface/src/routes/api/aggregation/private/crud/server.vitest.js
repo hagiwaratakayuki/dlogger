@@ -4,12 +4,11 @@ import * as server from './+server';
 import { Aggregation } from '$lib/server/mongodb/models/aggregation';
 
 
-
 describe('Server test', () => {
     it('shoud work crud flow ', async () => {
         const testSession = {user:'test'};
         /**
-         * @type {any};
+         * @type {any}
          */
         let testData  = {description:'test'};
         let id;

@@ -32,11 +32,11 @@ export type Contract = {
 
 }
 export type Aggregation = {
+
     title: string,
-    description?: string,
-    website?: WebSite,
+    description: string,
+    website: WebSite,
     protocol: string?,
-    address: string,
     id?: string | number,
     owner?: string
     logger: Contract,

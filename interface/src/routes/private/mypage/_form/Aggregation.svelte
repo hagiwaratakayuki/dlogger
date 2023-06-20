@@ -16,17 +16,23 @@
 	import Unit from "./elements/Unit.svelte";
 	import Audit from "./Audit.svelte";
 	
+	
     /**
+     * 
      * @typedef  {import("../../../../relay_types/aggregation.d.ts").Aggregation} Aggregation
+     * @typedef {import("$lib/util_types").KeysMap<Aggregation>} AggregationKeys
      */
-
-      const defaultValue = {description:'', audit:[], contracts:[], website:{}, logger:{}, origin:{}, sender:{}} 
+    
+      /**
+       * @type {AggregationKeys}
+       */
+      const defaultValue = {description:'', audit:[], contracts:[], website:{}, logger:{}, origin:{}, title:'', protocol:''} 
     /**
-     * @type {Aggregation}
+     * @type {AggregationKeys}
      */
 
-    export let value = {};
-    let _value = {};
+    export let value = Object.assign({}, defaultValue);
+    let _value = value;
     let _contracts = [];
     $:{
         if(value != _value){
@@ -47,11 +53,14 @@
 
 </script>
 <Form>
-    
-    <FlatHeader2>Description</FlatHeader2>    
+    <FlatHeader2>Title</FlatHeader2>
     <FormGroup floating>
-        
-        <Input type="textarea" id="about"/>
+        <Input type="textarea" bind:value={value.title} id="title"/>
+        <Label for="description" class="mb-4">Title of This Aggrecation</Label>
+    </FormGroup>
+    <FlatHeader2>Description</FlatHeader2>    
+    <FormGroup floating>        
+        <Input type="textarea" bind:value={value.description} id="about"/>
         <Label for="about" class="mb-4">Description of This Aggrecation</Label>
     </FormGroup>
     <FlatHeader2>Origin Adress</FlatHeader2>
@@ -60,7 +69,7 @@
     </Unit> 
   
 
-    <Audit  label={"Audit Link for This Aggregation"} key={'audit'} headerLevel={2} bind:link={value.audit}/>
+    <Audit  label={"Audit Link for This Aggregation"} key={'audit'} headerLevel={2} bind:values={value.audit}/>
     <FlatHeader2>Logger</FlatHeader2>
     <Unit isIndent={true}>
         <Contract contractAlias="Logger" key="logger" bind:value={value.logger}></Contract>

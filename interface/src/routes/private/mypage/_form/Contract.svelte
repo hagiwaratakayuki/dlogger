@@ -11,13 +11,29 @@
 	import FlatHeader3 from "../../../../elements/FlatHeader3.svelte";
 	import Unit from "./elements/Unit.svelte";
     /**
-     * @type {import("../../../../relay_types/aggregation").Contract}
+     * @typedef {import("../../../../relay_types/aggregation").Contract} ContractType
+     * @typedef {import("$lib/util_types").KeysMap<ContractType>} ContractInits 
      */
-    export let value = {};
+
+     /**
+      * @type {ContractInits}
+      */
+    const defaultValue = {
+        name: "", 
+        protocol: {}, 
+        website:{},
+        audit:[],
+        oracles:[]
+
+    }
+    /**
+     * @type {ContractInits}
+     */
+    export let value = Object.assign({}, defaultValue, value || {});
     export let key = "";
     export let contractAlias = "Contract";
     
-    let _value = {};
+    let _value = value;
 
   
     $: {
@@ -26,14 +42,7 @@
         
         if (_value != value) {
             
-            const defaultValue = {
-                name:"", 
-                protocol:{ }, 
-                website:{},
-                audit:[],
-                oracles:[]
-
-            }
+            
             _value = value = Object.assign({}, defaultValue, value || {});
            
 

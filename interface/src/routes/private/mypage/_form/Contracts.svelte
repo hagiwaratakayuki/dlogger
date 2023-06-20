@@ -8,8 +8,8 @@
 	import Unit from "./elements/Unit.svelte";
 	
     /**
-     * @typedef {import("../../../../relay_types").Contract} Contarct
-     * @type {Contarct[]}
+     * @typedef {import("../../../../relay_types/aggregation").Contract} ContarctType
+     * @type {ContarctType[]}
      */
     export let contracts = [];
     
@@ -55,7 +55,7 @@
 
     function addContract(){
         /**
-         * @type {Contarct}
+         * @type {ContarctType}
          */
         const push = { 
             isSender:contracts.length === 0
