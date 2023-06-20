@@ -1,5 +1,8 @@
-import { error, json } from '@sveltejs/kit';
-import { Agggregation} from '$lib/server/mongodb/models/aggregation'
+import { json } from '@sveltejs/kit';
+import { ObjectId } from 'mongodb';
+import { Aggregation} from '$lib/server/mongodb/models/aggregation'
+import { projectionTo } from './util';
+
 
 /**
 * @typedef {import("../../../../relay_types/aggregation").Aggregation} AggregationType
@@ -7,98 +10,35 @@ import { Agggregation} from '$lib/server/mongodb/models/aggregation'
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET(event) {
-    const id = event.url.searchParams.get('id');
-    if (!id) {
-        throw error(400)
-    }
+    const start = event.url.searchParams.get('cursor') || ''
     const {user} = await event.locals.session.get()
-    const model = new Agggregation();
+    const model = new Aggregation();
     await model.connect();
     
     
+    const query = {owner:user}
+    if (start) {
+        query._id = {'$gte':new ObjectId(start)}
+    }
     /**
-     * @type {any}
+     * @type {Partial<{[P in keyof AggregationType]: number}>};
      */
-    const aggregation = await model.read(id);
-    _checkParmision(aggregation, user);
+    const projection = {
+        title:1
+    }
 
-    
+
+    const cursor = model.query(query, {
+        projection,
+        limit:11,
+        sort:{'_id':-1}
+
+
+    });
+    const aggregations = (await cursor.toArray()).map(projectionTo)
+    const next = aggregations.length > 10 ? aggregations.pop().id : ''
    
    
-    return json(aggregation);
+   
+    return json({aggregations, next});
 };
-/** @type {import('./$types').RequestHandler} */
-export async function DELETE(event) {
-    const {id} = await event.request.json();
-    if (!id) {
-        throw error(400)
-    }
-    const { user } = await event.locals.session.get()
-    const model = new Agggregation();
-    await model.connect();
-
-
-    /**
-     * @type {any}
-     */
-    const aggregation = await model.read(id);
-    _checkParmision(aggregation, user);
-    return json(await model.delete(id))
-
-
-}
-/** @type {import('./$types').RequestHandler} */
-export async function POST(event) {
-    const { user } = await event.locals.session.get()
-    /**
-     * @type {AggregationType} 
-     */
-    const aggregation = await event.request.json()
-    aggregation.owner = user;
-
-    const model = new Agggregation();
-    await model.connect();
-
-
-    
-    return json(await model.create(aggregation))
-}
-/** @type {import('./$types').RequestHandler} */
-export async function PUT(event) {
-
-    const { user } = await event.locals.session.get()
-    /**
-     * @type {{id:string, data:AggregationType}} 
-     */
-    const update = await event.request.json()
-    
-
-    const model = new Agggregation();
-    await model.connect()
-    if (!update.id) {
-        throw error(400)
-    }
-    /**
-     * @type {any}
-     */
-    const aggregation = await model.read(update.id);
-    _checkParmision(aggregation, user);
-   
-    
-
-
-    
-    return json(await model.update(update.id, update.data))
-}
-/**
- * 
- * @param {AggregationType} aggregation 
- */
-function _checkParmision(aggregation, user) {
-   if (aggregation.owner !== user) {
-        throw error(400);
-
-   }
-
-
-}

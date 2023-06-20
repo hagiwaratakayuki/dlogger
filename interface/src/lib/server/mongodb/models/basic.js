@@ -25,9 +25,7 @@ export class Model {
          * @property { import("mongodb").Db } 
          */
         this.Db = Db;
-        /**
-         * @property {import("mongodb").Collection}
-         */
+        
         this.collection = Db.collection(this.collectionName);
         if (initiaizedCollections[this.collectionName]) {
             this.createIndex();
@@ -39,12 +37,14 @@ export class Model {
     async createIndex() {}
     /**
      * 
-     * @param {Id} id 
+     * @param {Id} id
+     * @param {import("mongodb").FindOptions} options
+     * @returns {Promise<any>} 
      */
-    read(id) {
-        const _id = this._regularizeId(id)
-        const query = {_id}
-        return this.collection.findOne(query);
+    read(id, options={}) {
+        const _id = this._regularizeId(id);
+        const query = {_id};
+        return this.collection.findOne(query, options);
 
         
     }
@@ -68,7 +68,8 @@ export class Model {
      * 
      * @param {Id} id 
      * @param {any} document
-     * @param  {import("mongodb").UpdateOptions} options
+     * @param {import("mongodb").UpdateOptions} options
+     * @return {Promise<import("mongodb").UpdateResult<any>>}
      */
     update(id, document, options={}) {
         const _id = this._regularizeId(id);
@@ -79,19 +80,21 @@ export class Model {
     }
     /**
      * 
-     * @param {Id} id 
-     */
+     * @param {Id} id
+      */
     delete(id) {
         const _id = this._regularizeId(id);
-        return this.collection.deleteOne(_id);
+        return this.collection.deleteOne({_id});
 
     }
     /**
      * 
-     * @param {any} query 
+     * @param {any} query
+     * @param {any} options
+     * @returns {import("mongodb").FindCursor<any>}
      */
-    query(query) {
-       return  this.collection.find(query);     
+    query(query, options) {
+       return  this.collection.find(query, options);     
     }
 
 
