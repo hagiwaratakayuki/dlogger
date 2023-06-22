@@ -1,8 +1,8 @@
 <script>
 
-    import { Col, Container, Row } from "sveltestrap";
-import Aggregation from "./_form/Aggregation.svelte";
-    import Side from "./_log/Side.svelte";
+  import { Col, Container, Row } from "sveltestrap";
+  import Aggregation from "./_form/Aggregation.svelte";
+  import Side from "./_log/Side.svelte";
 	import HeadeNavi from "$lib/elements/HeadeNavi.svelte";
 
 /**

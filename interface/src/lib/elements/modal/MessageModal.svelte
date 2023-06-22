@@ -4,7 +4,7 @@
   /**
    * @type {'primary' | 'danger' | 'info' }
    */
-  export let color = ''
+  export let color = 'danger';
   export let open = false;
   function toggle () {
     open = false; 

@@ -5,7 +5,7 @@
 
 
 /**
- * @type {import("src/relay_types/aggregation.d.ts").Protocol}
+ * @type {import("src/relay_types/aggregation.d.ts").ProtocolAddress}
  */
 export let value = {name:'', address:''};
 export let isIndent = false 
