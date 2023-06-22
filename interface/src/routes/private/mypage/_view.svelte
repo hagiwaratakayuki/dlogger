@@ -14,7 +14,7 @@
 
  
     /**
-     * @type {import("../../../relay_types/aggregation").Aggregation[]}
+     * @type {import("src/relay_types/aggregation").Aggregation[]}
      */
     export let aggregations = [];
     export let isLoading = false;

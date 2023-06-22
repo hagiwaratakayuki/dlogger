@@ -9,7 +9,7 @@
 	import FlatHeader2 from "../../../../elements/FlatHeader2.svelte";
 	import Unit from "./elements/Unit.svelte";
     /**
-     * @type {import("../../../../relay_types/aggregation").Audit}
+     * @type {import("src/relay_types/aggregation").Audit}
      */
     export let values = []; // same thing multyple link. ex websit, onchain 
     export let key = "";
@@ -29,7 +29,7 @@
 
     function addLink() {
          /**
-          * @type {import("../../../../relay_types/aggregation").Link}
+          * @type {import("src/relay_types/aggregation").Link}
           * */
         const link = {linkType:"website"}
         values.push(link);

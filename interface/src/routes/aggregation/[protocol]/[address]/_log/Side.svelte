@@ -3,7 +3,7 @@
 	import NoItem from "../_elements/NoItem.svelte";
 	import FlatHeader2 from "../../../../../elements/FlatHeader2.svelte";
     /**
-     * @type {import("../../../../../relay_types/logs").Logs}
+     * @type {import("src/relay_types/logs").Logs}
      */
     export let logs = [];
     let _logBinds = []

@@ -6,7 +6,7 @@ import Aggregation from "./_form/Aggregation.svelte";
 	import HeadeNavi from "$lib/elements/HeadeNavi.svelte";
 
 /**
- * @type {import("../../../relay_types/logs.d.ts").Logs}
+ * @type {import("src/relay_types/logs.d.ts").Logs}
  */
 const logs = [
     {
@@ -48,7 +48,7 @@ const logs = [
 
 ]
     /**
- * @type {import("../../../relay_types/aggregation").Aggregation}
+ * @type {import("src/relay_types/aggregation").Aggregation}
  */
 const aggregation = {
     description:"this is test",

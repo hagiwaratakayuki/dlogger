@@ -6,9 +6,9 @@
 	import FlatHeader3 from "../../../../../elements/FlatHeader3.svelte";
 	import Group from "../../../../../elements/Group.svelte";
     /**
-     * @typedef {import("../../../../relay_types/aggregation").Link} Link
-     * @typedef {import("../../../../relay_types/aggregation").WebSite} WebSite
-     * @typedef {import("../../../../relay_types/aggregation").ProtocolAddress} ProtocolAddress
+     * @typedef {import("src/relay_types/aggregation").Link} Link
+     * @typedef {import("src/relay_types/aggregation").WebSite} WebSite
+     * @typedef {import("src/relay_types/aggregation").ProtocolAddress} ProtocolAddress
     */
     /**
      * @type {Link}

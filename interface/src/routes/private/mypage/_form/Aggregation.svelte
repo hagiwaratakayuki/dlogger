@@ -19,7 +19,7 @@
 	
     /**
      * 
-     * @typedef  {import("../../../../relay_types/aggregation.d.ts").Aggregation} Aggregation
+     * @typedef  {import("src/relay_types/aggregation.d.ts").Aggregation} Aggregation
      * @typedef {import("$lib/util_types").KeysMap<Aggregation>} AggregationKeys
      */
     

@@ -7,7 +7,7 @@
 	import Unit from "./elements/Unit.svelte";
     import Group from "../../../../../elements/Group.svelte";
     /**
-     * @type {import("../../../../relay_types/aggregation").Audit}
+     * @type {import("src/relay_types/aggregation").Audit}
      */
     export let values = []; 
     

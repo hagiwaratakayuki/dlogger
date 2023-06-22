@@ -5,7 +5,7 @@ import Group from "../../../../../elements/Group.svelte";
 
 
 /**
- * @type {import("../../../../../relay_types/aggregation").WebSite}
+ * @type {import("src/relay_types/aggregation").WebSite}
  */
 export let value = {url:''};
 

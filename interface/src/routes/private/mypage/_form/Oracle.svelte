@@ -5,7 +5,7 @@
     import Website from "./Website.svelte";
 	import FlatHeader3 from "../../../../elements/FlatHeader3.svelte";
     /**
-     * @type {import("../../../../relay_types/aggregation").Oracle}
+     * @type {import("src/relay_types/aggregation").Oracle}
      */
     export let value = {};
     export let key = "";

@@ -4,7 +4,7 @@
     import Protocol from "./Protocol.svelte";
 	import Website from "./Website.svelte";
     /**
-     * @typedef {import("../../../../relay_types/aggregation").Link} Link
+     * @typedef {import("src/relay_types/aggregation").Link} Link
      */
     
     /**

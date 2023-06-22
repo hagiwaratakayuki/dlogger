@@ -8,7 +8,7 @@
 	import Unit from "./elements/Unit.svelte";
 	
     /**
-     * @typedef {import("../../../../relay_types/aggregation").ContractMinimum} ContractType
+     * @typedef {import("src/relay_types/aggregation").ContractMinimum} ContractType
      * @type {ContractType[]}
      */
     export let contracts = [];

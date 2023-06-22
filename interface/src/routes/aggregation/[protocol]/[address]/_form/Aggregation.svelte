@@ -14,7 +14,7 @@
 	import Group from "../../../../../elements/Group.svelte";
 	import Audit from "./Audit.svelte";
     /**
-     * @type {import("../../../../../relay_types/aggregation").Aggregation} 
+     * @type {import("src/relay_types/aggregation").Aggregation} 
      */
     export let aggregation = {};
    

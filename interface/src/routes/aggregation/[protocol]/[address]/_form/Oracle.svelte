@@ -6,7 +6,7 @@
 	import Group from "../../../../../elements/Group.svelte";
 	import HorizontalHeader from "../../../../../elements/HorizontalHeader.svelte";
     /**
-     * @type {import("../../../../../relay_types/aggregation").Oracle}
+     * @type {import("src/relay_types/aggregation").Oracle}
      */
     export let value = {};
   

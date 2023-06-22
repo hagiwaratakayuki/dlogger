@@ -13,7 +13,7 @@
 	import Unit from "./elements/Unit.svelte";
 	import HorizontalHeader from "../../../../../elements/HorizontalHeader.svelte";
     /**
-     * @type {import("../../../../../relay_types/aggregation").Contract}
+     * @type {import("src/relay_types/aggregation").Contract}
      */
     export let value = {};
    

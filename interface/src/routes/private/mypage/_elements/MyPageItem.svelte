@@ -10,7 +10,7 @@ import {wordWrapper} from './word_wrapper';
 const dispatcher = createEventDispatcher();
 
 /**
- * @type {import("../../../../relay_types/aggregation").Aggregation}
+ * @type {import("src/relay_types/aggregation").Aggregation}
  */
 export let aggregation = {};
 

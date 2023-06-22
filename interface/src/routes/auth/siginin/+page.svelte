@@ -2,7 +2,7 @@
 	import { Col, Container, Row } from "sveltestrap";
     import BasicForm from "../_form/BasicForm.svelte";
     import {goto} from "$app/navigation"
-    
+    import { MYPAGE } from "$lib/consts/route";
 
     let isLoading = false;
     let wholeMessage = ''; 
@@ -19,9 +19,9 @@
    function onClick() {
         isLoading = true;
         /**
-         * @type {import('.svelte-kit/types/src/routes/api/auth/signup/$types').RouteId}
+         * @type {import('.svelte-kit/types/src/routes/api/auth/signin/$types').RouteId}
          */
-        const url = '/api/auth/signup';
+        const url = '/api/auth/signin';
         const promise = fetch(url, {
             method: 'PUT',
             headers: {
@@ -31,11 +31,7 @@
         });
         promise.then(function(response) {
             if (response.ok === true) {
-                /**
-                 * @type {import('.svelte-kit/types/src/routes/private/mypage/$types').RouteId}
-                 */
-                const myPage = '/private/mypage';  
-                goto( myPage );
+                goto("/private/mypage")
                 return
             }
             isLoading = false;
@@ -59,7 +55,7 @@
     <Row class="justify-content-md-center">
         <Col md=4 class="bg-white mt-5 pt-4 border border-primary-subtle rounded">
             <BasicForm 
-                buttonMessage={'Sign Up'} 
+                buttonMessage={"Sign In"} 
                 on:click={onClick}
                 bind:screen_name = {user.screen_name}
                 bind:password = {user.password}

@@ -8,7 +8,7 @@
 	import Unit from "./elements/Unit.svelte";
 	
     /**
-     * @typedef {import("../../../../relay_types").Contract} Contarct
+     * @typedef {import("src/relay_types").Contract} Contarct
      * @type {Contarct[]}
      */
     export let contracts = [];

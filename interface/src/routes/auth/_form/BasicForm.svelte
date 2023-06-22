@@ -1,6 +1,7 @@
 <script>
 import { Form, FormGroup, Label, Input, Button, FormText, Spinner } from "sveltestrap";
 import {beforeUpdate, afterUpdate, createEventDispatcher} from 'svelte';
+	import MessageModal from "$lib/elements/modal/MessageModal.svelte";
 const dipatch = createEventDispatcher();
 
 export let screen_name = '';
@@ -9,7 +10,7 @@ export let buttonMessage = "Login";
 export let passwordInfo = "";
 export let nameInfo = "";
 export let isLoading = false;
-
+export let wholeMessage = '';
 
 afterUpdate(function() {
   
@@ -19,7 +20,7 @@ afterUpdate(function() {
 
 
 </script>
-
+<MessageModal open={!!wholeMessage} message={wholeMessage} color={"danger"}></MessageModal>
 <Form>
   <FormGroup floating>
     
