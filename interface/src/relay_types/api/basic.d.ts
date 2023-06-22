@@ -1,7 +1,11 @@
 export type UpdateResult = {
-    isUpdated: boolean
+    isUpdated: true
 };
 
 export type DeleteResult = {
-    isDeleted: boolean
+    isDeleted: true
+}
+
+export type CreateResult = {
+    isCreated: true
 }

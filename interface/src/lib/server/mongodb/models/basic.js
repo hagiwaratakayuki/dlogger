@@ -28,7 +28,7 @@ export class Model {
         
         this.collection = Db.collection(this.collectionName);
         if (initiaizedCollections[this.collectionName]) {
-            this.createIndex();
+            await this.createIndex();
             initiaizedCollections[this.collectionName] = true;
 
         }

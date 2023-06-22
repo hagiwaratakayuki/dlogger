@@ -1,13 +1,21 @@
 <script>
 import { Form, FormGroup, Label, Input, Button, FormText, Spinner } from "sveltestrap";
+import {beforeUpdate, afterUpdate, createEventDispatcher} from 'svelte';
+const dipatch = createEventDispatcher();
 
-
-export let id = '';
+export let screen_name = '';
 export let password = '';
 export let buttonMessage = "Login";
 export let passwordInfo = "";
 export let nameInfo = "";
-export let isLoading = false; 
+export let isLoading = false;
+
+
+afterUpdate(function() {
+  
+  dipatch('update')
+})
+
 
 
 </script>
@@ -15,8 +23,8 @@ export let isLoading = false;
 <Form>
   <FormGroup floating>
     
-    <Input type="text" id="id" bind:value={id} disabled={isLoading}/>
-    <Label for="id">Account ID</Label>
+    <Input type="text" id="screen_name" bind:value={screen_name} disabled={isLoading}/>
+    <Label for="screen_name">Screen Name</Label>
     {#if nameInfo}<FormText>{nameInfo}</FormText>{/if}
   </FormGroup>
 
@@ -26,6 +34,6 @@ export let isLoading = false;
       {#if passwordInfo}<FormText>{passwordInfo}</FormText>{/if}
   </FormGroup>
   <FormGroup class="text-center">
-    <Button type="button" color={"primary"} disabled={isLoading} class="w-25">{#if isLoading}<Spinner size={"sm"}></Spinner>{/if}{buttonMessage}</Button>
+    <Button on:click type="button" color={"primary"} disabled={isLoading || !password  || !screen_name  } class="w-25">{#if isLoading}<Spinner size={"sm"}></Spinner>{/if}{buttonMessage}</Button>
   </FormGroup>  
 </Form>

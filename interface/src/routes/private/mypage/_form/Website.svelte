@@ -1,7 +1,7 @@
 <script>
 import { Input, FormGroup, Label } from "sveltestrap";
 /**
- * @type {import("$lib/util_types.js").KeysMap<import("../../../../relay_types/aggregation.d.ts").WebSite>}
+ * @type {Partial<import("../../../../relay_types/aggregation.d.ts").WebSite> | null}
  */
 export let value = {url:''};
 export let key = '';
@@ -10,7 +10,7 @@ $: if(!value) {
 
 }
 function createId(key) {
-    return 'website_' +key + '_url'
+    return key + '_website_url';
 }
 </script>
 
