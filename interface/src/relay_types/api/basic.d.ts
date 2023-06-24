@@ -9,3 +9,10 @@ export type DeleteResult = {
 export type CreateResult = {
     isCreated: true
 }
+
+export type IdRequest = {
+    id:'string',
+
+};
+
+export type IdKey = keyof IdRequest;

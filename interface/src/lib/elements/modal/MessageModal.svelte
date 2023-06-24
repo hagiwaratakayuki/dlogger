@@ -5,12 +5,12 @@
    * @type {'primary' | 'danger' | 'info' }
    */
   export let color = 'danger';
-  export let open = false;
+  export let isOpen = false;
   function toggle () {
-    open = false; 
+    isOpen = false; 
   }
 </script>
 
 
  
-<Modal body header="Modal title" isOpen={open} {toggle}><p class={"color-text-" + color}>{message}</p></Modal>
+<Modal body header="Modal title" isOpen={isOpen} {toggle}><p class={"color-text-" + color}>{message}</p></Modal>

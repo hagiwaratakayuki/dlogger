@@ -50,10 +50,14 @@
 
   
    }
+   
+
+
 </script>
 <Container fluid>
     <Row class="justify-content-md-center">
         <Col md=4 class="bg-white mt-5 pt-4 border border-primary-subtle rounded">
+            <p class="text-center">No Account? <a href='../signup'>Sign Up</a></p>
             <BasicForm 
                 buttonMessage={"Sign In"} 
                 on:click={onClick}
@@ -61,6 +65,8 @@
                 bind:password = {user.password}
                 isLoading = {isLoading}
                 wholeMessage = {wholeMessage}
+                bind:
+
 
             />
         </Col>

@@ -15,6 +15,7 @@
     import Contracts from "./Contracts.svelte";
 	import Unit from "./elements/Unit.svelte";
 	import Audit from "./Audit.svelte";
+	import MessageModal from "$lib/elements/modal/MessageModal.svelte";
 	
 	
     /**
@@ -32,6 +33,8 @@
      */
 
     export let value = Object.assign({}, defaultValue);
+    export let isFail = false;
+    export let message = "Something Incolect";
     let _value = value;
     let _contracts = [];
     $:{
@@ -47,6 +50,7 @@
         dispatch('save');
 
     }
+    
    
 
 
@@ -55,12 +59,12 @@
 <Form>
     <FlatHeader2>Title</FlatHeader2>
     <FormGroup floating>
-        <Input type="textarea" bind:value={value.title} id="title"/>
+        <Input type="text" bind:value={value.title} id="title" data-testid='title'/>
         <Label for="description" class="mb-4">Title of This Aggrecation</Label>
     </FormGroup>
     <FlatHeader2>Description</FlatHeader2>    
     <FormGroup floating>        
-        <Input type="textarea" bind:value={value.description} id="about"/>
+        <Input type="textarea" bind:value={value.description} id="about" data-testid/>
         <Label for="about" class="mb-4">Description of This Aggrecation</Label>
     </FormGroup>
     <FlatHeader2>Origin Adress</FlatHeader2>
@@ -83,6 +87,7 @@
         
     </Unit>
     <FormGroup>
-        <Button color="primary" size="lg" type="button"  class="w-100 fw-bold" on:click={triggerSave}>Save</Button>
+        <Button data-testid='save' color="primary" size="lg" type="button"  class="w-100 fw-bold" on:click={triggerSave}>Save</Button>
     </FormGroup>
 </Form>
+<MessageModal message={message} bind:isOpen={isFail}></MessageModal>

@@ -16,13 +16,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.28.1",
-    "@storybook/addon-essentials": "^7.0.20",
-    "@storybook/addon-interactions": "^7.0.20",
-    "@storybook/addon-links": "^7.0.20",
-    "@storybook/addon-mdx-gfm": "^7.0.20",
     "@storybook/blocks": "^7.0.20",
-    "@storybook/svelte": "^7.0.20",
-    "@storybook/sveltekit": "^7.0.20",
     "@storybook/testing-library": "^0.1.0",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.5.0",
@@ -32,12 +26,9 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.6.12",
     "eslint-plugin-svelte": "^2.26.0",
-    "mocha": "^10.2.0",
     "postcss": "^8.4.23",
     "prettier": "^2.8.0",
     "prettier-plugin-svelte": "^2.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "svelte": "^3.54.0",
     "svelte-check": "^3.0.1",
     "svelte-feather-icons": "^4.0.1",
@@ -48,7 +39,9 @@
   "type": "module",
   "dependencies": {
     "@sveltekit-statefull-session/core": "^1.2.4",
+    "@testing-library/svelte": "^3.2.2",
     "bcrypt": "^5.1.0",
+    "jsdom": "^22.1.0",
     "mongodb": "5.6",
     "sveltestrap": "github:hagiwaratakayuki/sveltestrappatch#popperjs_degration_fix"
   }

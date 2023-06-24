@@ -22,6 +22,8 @@ describe('Server test', () => {
         await new Promise(function (res) {
             setTimeout(res, 10);
         })
+        
+
         await model.create({owner:'owner2', title: test2 });
         /**
          * @type {any}

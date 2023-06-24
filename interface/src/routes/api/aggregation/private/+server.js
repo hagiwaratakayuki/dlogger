@@ -1,11 +1,11 @@
 import { json } from '@sveltejs/kit';
 import { ObjectId } from 'mongodb';
 import { Aggregation} from '$lib/server/mongodb/models/aggregation'
-import { projectionTo } from './util';
+import { projectionTo } from '../../../../lib/server/mongodb/util';
 
 
 /**
-* @typedef {import("../../../../relay_types/aggregation").Aggregation} AggregationType
+* @typedef {import("src/relay_types/aggregation").Aggregation} AggregationType
 */
 
 /** @type {import('./$types').RequestHandler} */

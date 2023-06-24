@@ -1,14 +1,19 @@
 import { error, json } from '@sveltejs/kit';
 import { Aggregation } from '$lib/server/mongodb/models/aggregation'
-import { _checkExist, projectionTo } from '../util';
+import { _checkExist, projectionTo } from '$lib/server/mongodb/util';
+import { checkParmision } from '$lib/server/auth/checkParmission';
 
 /**
-* @typedef {import("../../../../../relay_types/aggregation").Aggregation} AggregationType
+* @typedef {import("src/relay_types/aggregation").Aggregation} AggregationType
 */
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET(event) {
-    const id = event.url.searchParams.get('id');
+    /**
+     * @type {import('src/relay_types/api/basic.d.ts').IdKey}
+     */
+    const key = 'id';
+    const id = event.url.searchParams.get(key);
     if (!id) {
         throw error(400)
     }
@@ -25,7 +30,7 @@ export async function GET(event) {
         throw error(404);
     }
     _checkExist(aggregation);
-    _checkParmision(aggregation, user);
+    checkParmision(aggregation, user);
 
 
 
@@ -34,11 +39,14 @@ export async function GET(event) {
 };
 /** @type {import('./$types').RequestHandler} */
 export async function DELETE(event) {
+    /**
+     * @type {import('src/relay_types/api/basic.d.ts').IdRequest}
+     */
     const { id } = await event.request.json();
     if (!id) {
         throw error(400)
     }
-    const { user } = await event.locals.session.get()
+    const { user } = await event.locals.session.get();
     const model = new Aggregation();
     await model.connect();
 
@@ -48,13 +56,13 @@ export async function DELETE(event) {
      */
     const aggregation = await model.read(id);
     _checkExist(aggregation);
-    _checkParmision(aggregation, user);
+    checkParmision(aggregation, user);
     const deleteResult = await model.delete(id);
     if ( deleteResult.acknowledged === false) {
         throw error(500);
     }
     /**
-     * @type {import("../../../../../relay_types/api/basic.d.ts").DeleteResult}
+     * @type {import("src/relay_types/api/basic.d.ts").DeleteResult}
      */
     const resp = {isDeleted: true}
     return json(resp);
@@ -98,7 +106,7 @@ export async function PUT(event) {
      */
     const aggregation = await model.read(update.id);
     _checkExist(aggregation);
-    _checkParmision(aggregation, user);
+    checkParmision(aggregation, user);
 
     const updateResult = await model.update(update.id, update.data);
     if (updateResult.acknowledged === false) {
@@ -111,21 +119,6 @@ export async function PUT(event) {
    
     return json(resp);
 }
-/**
- * 
- * @param {AggregationType} aggregation
- * @param {string} user 
- */
-function _checkParmision(aggregation, user) {
 
-
-    
-    if (aggregation.owner !== user) {
-        throw error(400);
-
-    }
-
-
-}
 
 

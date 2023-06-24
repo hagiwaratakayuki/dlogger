@@ -4,6 +4,9 @@
     /** @type {import('./$types').LayoutData} */
     //export let data;
 </script>
+<svelte:head>
+  <title>D Logger</title>
+</svelte:head>
 <div id="global" class='en'>
     <slot />
 </div>

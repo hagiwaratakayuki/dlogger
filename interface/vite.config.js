@@ -14,6 +14,7 @@ export default defineConfig({
 		}
 	},
 	test: {
-		include: ['src/**/*.vitest.{js,ts}']
+		include: ['src/**/*.vitest.{js,ts}'],
+		environment: "jsdom",
 	}
 });

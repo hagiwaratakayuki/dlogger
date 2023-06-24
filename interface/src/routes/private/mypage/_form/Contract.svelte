@@ -29,7 +29,7 @@
     /**
      * @type {ContractInits}
      */
-    export let value = Object.assign({}, defaultValue, value || {});
+    export let value = Object.assign({}, defaultValue);
     export let key = "";
     export let contractAlias = "Contract";
     
