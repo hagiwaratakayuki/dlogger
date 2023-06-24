@@ -1,6 +1,6 @@
 .DS_Store
 **/.DS_Store
-interface/node_modules
+**/node_modules
 interface/build
 interface/.svelte-kit
 interface/package

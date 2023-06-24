@@ -1,6 +1,5 @@
 const {
-  time,
-  loadFixture,
+    loadFixture,
 } = require("@nomicfoundation/hardhat-network-helpers");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
@@ -15,11 +14,11 @@ function var_dump(value) {
 
 }
 
-describe("Loger", function () {
+describe("Logger", function () {
   // We define a fixture to reuse the same setup in every test.
   // We use loadFixture to run this setup once, snapshot that state,
   // and reset Hardhat Network to that snapshot in every test.
-  async function deployOneYearLockFixture() {
+  async function deployFixture() {
     
 
     
@@ -33,7 +32,7 @@ describe("Loger", function () {
 
   describe("Basic", function () {
     it("Should Saved Data is Valid", async function () {
-      const { logger,  owner, otherAccount} = await loadFixture(deployOneYearLockFixture);
+      const { logger,  owner, otherAccount} = await loadFixture(deployFixture);
       await logger.addLog('test');
       await logger.addLog('test2');
       const obj1 = await logger.objects(1)
