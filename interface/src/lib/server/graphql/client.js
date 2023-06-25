@@ -8,7 +8,7 @@ let URL = '';
  */
 export async function call(query) {
     if (!URL) {
-        const fileName = `secret.${import.meta.env?.MODE || 'production'}.js`
+        const fileName = `./secret.${import.meta.env?.MODE || 'production'}.js`
         let secret = await import(fileName);
         URL = secret.URL;
     }

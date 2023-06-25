@@ -1,6 +1,7 @@
 import { Aggregation } from '$lib/server/mongodb/models/aggregation';
 import { gql } from 'graphql-request';
 import {call} from '$lib/server/graphql/client';
+import { json } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load(event) {
@@ -20,7 +21,7 @@ export async function load(event) {
      const callerString = callers.join(", ")
      
      const query = gql`{
-        onAddLog(where: {origin: ${origin}, or:[{$callerString}] }){
+        onAddLogs(where: {origin: ${origin}, or:[${callerString}] }){
             log
             origin
             caller
@@ -31,12 +32,27 @@ export async function load(event) {
         }
              
      `
+     /**
+      * @typedef {{transactionHash:string}} log
+      */
+      /**
+       * @type {log[]}
+       */
+     const  queryResponses =  await call(query);
+     /**
+      * @type {Object<string, log[]>}
+      */
+     const  logMap = {};
+     for (const queryResponse of queryResponses) {
+        const logs = logMap[queryResponse.transactionHash] || [];
+        logs.push(queryResponse)
 
-     const logs =  await call(query);
+     }
+     const logs = Object.values(logMap);
 
 
 
 
 
-    return {};
+    return json({aggreagtion, logs});
 };
