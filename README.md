@@ -15,12 +15,13 @@ DLogger is a tool designed to provide transparency and accountability for indivi
 To start using DLogger, follow these steps:
 
 1. Clone the DLogger repository to your local machine.
-2. Install the necessary dependencies by running `npm install`.
-3. Configure the settings according to your requirements in the `config.js` file.
-4. Run the application using `npm start`.
-5. Access the DLogger dashboard by opening your browser and navigating to `http://localhost:3000`.
-6. Authenticate yourself using your credentials.
-7. Once authenticated, you will have access to the audit results and operational logs of your smart contracts through a user-friendly interface.
+2. run npm install  all directry
+3. deploy contract
+4. update  subgraph yaml and deploy graph to the graph
+5. create interface/src/lib/server/mongodb/secret.<mode>.js to connect mongodb
+6. set your graphdb access URL to  interface/src/lib/server/graphql/secret.<mode>.js
+
+
 
 ## License
 
