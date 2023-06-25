@@ -1,12 +1,12 @@
 type onAddLog @entity(immutable: true) {
-  id: Bytes!
+  id: String!
   log: String! # string
-  origin: Bytes! # bytes20
-  caller: Bytes! # bytes20
-  block: BigInt! # uint256
-  timestamp: BigInt! # uint256
-  logger: Bytes! # bytes20
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  origin: String! # bytes20
+  caller: String! # bytes20
+  block: String! # uint256
+  timestamp: String! # uint256
+  logger: String! # bytes20
+  blockNumber: String!
+  blockTimestamp: String!
+  transactionHash: String!
 }

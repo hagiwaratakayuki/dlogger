@@ -65,7 +65,7 @@
                 bind:password = {user.password}
                 isLoading = {isLoading}
                 wholeMessage = {wholeMessage}
-                bind:
+               
 
 
             />

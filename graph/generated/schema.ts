@@ -12,9 +12,9 @@ import {
 } from "@graphprotocol/graph-ts";
 
 export class onAddLog extends Entity {
-  constructor(id: Bytes) {
+  constructor(id: string) {
     super();
-    this.set("id", Value.fromBytes(id));
+    this.set("id", Value.fromString(id));
   }
 
   save(): void {
@@ -22,34 +22,32 @@ export class onAddLog extends Entity {
     assert(id != null, "Cannot save onAddLog entity without an ID");
     if (id) {
       assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type onAddLog must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        id.kind == ValueKind.STRING,
+        `Entities of type onAddLog must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("onAddLog", id.toBytes().toHexString(), this);
+      store.set("onAddLog", id.toString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): onAddLog | null {
-    return changetype<onAddLog | null>(
-      store.get_in_block("onAddLog", id.toHexString())
-    );
+  static loadInBlock(id: string): onAddLog | null {
+    return changetype<onAddLog | null>(store.get_in_block("onAddLog", id));
   }
 
-  static load(id: Bytes): onAddLog | null {
-    return changetype<onAddLog | null>(store.get("onAddLog", id.toHexString()));
+  static load(id: string): onAddLog | null {
+    return changetype<onAddLog | null>(store.get("onAddLog", id));
   }
 
-  get id(): Bytes {
+  get id(): string {
     let value = this.get("id");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
   }
 
   get log(): string {
@@ -65,107 +63,107 @@ export class onAddLog extends Entity {
     this.set("log", Value.fromString(value));
   }
 
-  get origin(): Bytes {
+  get origin(): string {
     let value = this.get("origin");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set origin(value: Bytes) {
-    this.set("origin", Value.fromBytes(value));
+  set origin(value: string) {
+    this.set("origin", Value.fromString(value));
   }
 
-  get caller(): Bytes {
+  get caller(): string {
     let value = this.get("caller");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set caller(value: Bytes) {
-    this.set("caller", Value.fromBytes(value));
+  set caller(value: string) {
+    this.set("caller", Value.fromString(value));
   }
 
-  get block(): BigInt {
+  get block(): string {
     let value = this.get("block");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigInt();
+      return value.toString();
     }
   }
 
-  set block(value: BigInt) {
-    this.set("block", Value.fromBigInt(value));
+  set block(value: string) {
+    this.set("block", Value.fromString(value));
   }
 
-  get timestamp(): BigInt {
+  get timestamp(): string {
     let value = this.get("timestamp");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigInt();
+      return value.toString();
     }
   }
 
-  set timestamp(value: BigInt) {
-    this.set("timestamp", Value.fromBigInt(value));
+  set timestamp(value: string) {
+    this.set("timestamp", Value.fromString(value));
   }
 
-  get logger(): Bytes {
+  get logger(): string {
     let value = this.get("logger");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set logger(value: Bytes) {
-    this.set("logger", Value.fromBytes(value));
+  set logger(value: string) {
+    this.set("logger", Value.fromString(value));
   }
 
-  get blockNumber(): BigInt {
+  get blockNumber(): string {
     let value = this.get("blockNumber");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigInt();
+      return value.toString();
     }
   }
 
-  set blockNumber(value: BigInt) {
-    this.set("blockNumber", Value.fromBigInt(value));
+  set blockNumber(value: string) {
+    this.set("blockNumber", Value.fromString(value));
   }
 
-  get blockTimestamp(): BigInt {
+  get blockTimestamp(): string {
     let value = this.get("blockTimestamp");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigInt();
+      return value.toString();
     }
   }
 
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
+  set blockTimestamp(value: string) {
+    this.set("blockTimestamp", Value.fromString(value));
   }
 
-  get transactionHash(): Bytes {
+  get transactionHash(): string {
     let value = this.get("transactionHash");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set transactionHash(value: Bytes) {
-    this.set("transactionHash", Value.fromBytes(value));
+  set transactionHash(value: string) {
+    this.set("transactionHash", Value.fromString(value));
   }
 }
