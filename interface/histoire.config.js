@@ -8,7 +8,7 @@ export default defineConfig({
   storyMatch: [
     'src/story/**/*.story.svelte',
     'src/lib/**/*.story.svelte',
-    'src/route/**/*.story.svelte',
+    'src/routes/**/*.story.svelte',
 
   ],
   tree: {
