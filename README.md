@@ -1,3 +1,8 @@
+# Develop Stoped
+
+This product develop stoped. Becouse I don't want to be stuck with the consequences of "COMMUNITY"'s slacking.
+If you truly uphold fairness and transparency, it is self-evident that there must be an easily accessible means of verification.
+
 # DLogger
 
 DLogger is a tool designed to provide transparency and accountability for individuals or organizations that require visibility into the audit results and operational logs of their smart contracts. With DLogger, you can conveniently access both the audit results and the operational logs of your smart contracts through a single URL.
@@ -7,6 +12,8 @@ DLogger is a tool designed to provide transparency and accountability for indivi
 - **Audit Results**: DLogger enables you to easily access the audit results of your smart contracts. You can review the findings, recommendations, and any identified vulnerabilities to ensure the security and reliability of your smart contracts.
 
 - **Operational Logs**: DLogger also provides you with detailed operational logs of your smart contracts. You can track the execution of various functions, events, and transactions, allowing you to monitor the behavior and performance of your smart contracts over time.
+
+
 
 - **Transparency and Accountability**: DLogger is particularly beneficial for individuals or organizations involved in activities such as decentralized autonomous organizations (DAOs), automated market makers (AMMs), or non-fungible token (NFT) issuers. By offering a single URL for accessing both audit results and operational logs, DLogger promotes transparency and enhances accountability within these contexts.
 
